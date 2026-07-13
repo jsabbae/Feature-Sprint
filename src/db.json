@@ -1,0 +1,17 @@
+{
+    "tasks":[
+        {
+            "id": 1,
+            "title": "Preparar informe",
+            "descrition": "Informe mensual",
+            "status": "pending",
+            "priority": "high",
+            "createdAt": "2026-07-13" ,
+            "dueDate": "2026-07-20", "_comment": "Fecha límite para completar la tarea" 
+            
+
+
+        }
+    ]
+
+}
