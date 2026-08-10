@@ -7,7 +7,17 @@
             "status": "pending",
             "priority": "high",
             "createdAt": "2026-08-10",
-            "dueDate": "2026-08-17", "_comment": "Fecha límite para completar la tarea"
+            "dueDate": "2026-08-17",
+            "_comment": "Fecha límite para completar la tarea"
+        },
+        {
+            "id": 2,
+            "title": "Revisar documentación",
+            "description": "Comprobar documentación del proyecto",
+            "status": "in progress",
+            "priority": "medium",
+            "createdAt": "2026-08-10",
+            "dueDate": null
         }
     ]
 }
