@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { getTasks } from "../services/taskService";
+import { getTasks, createTask } from "../services/taskService";
 import TaskList from "../components/TaskList";
-import { createTask } from "../components/TaskForm";
+import TaskForm from "../components/TaskForm";
 
 function Home() {
     const [tasks, setTasks] = useState([]);
@@ -19,8 +19,8 @@ function Home() {
     return (
         <main>
             <h1>Gestión de tareas</h1>
-            <TaskList tasks={tasks} />
             <TaskForm onCreateTask={handleCreateTask} />
+            <TaskList tasks={tasks} />
         </main>
     );
 }

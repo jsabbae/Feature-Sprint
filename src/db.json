@@ -1,23 +1,51 @@
 {
-    "tasks": [
-        {
-            "id": 1,
-            "title": "Preparar un informe",
-            "description": "Informe mensual",
-            "status": "pending",
-            "priority": "high",
-            "createdAt": "2026-08-10",
-            "dueDate": "2026-08-17",
-            "_comment": "Fecha límite para completar la tarea"
-        },
-        {
-            "id": 2,
-            "title": "Revisar documentación",
-            "description": "Comprobar documentación del proyecto",
-            "status": "in progress",
-            "priority": "medium",
-            "createdAt": "2026-08-10",
-            "dueDate": null
-        }
-    ]
+  "tasks": [
+    {
+      "id": "1",
+      "title": "Preparar un informe",
+      "description": "Informe mensual",
+      "status": "pending",
+      "priority": "high",
+      "createdAt": "2026-08-10",
+      "dueDate": "2026-08-17",
+      "_comment": "Fecha límite para completar la tarea"
+    },
+    {
+      "id": "2",
+      "title": "Revisar documentación",
+      "description": "Comprobar documentación del proyecto",
+      "status": "in progress",
+      "priority": "medium",
+      "createdAt": "2026-08-10",
+      "dueDate": null
+    },
+    {
+      "title": "Informe de algo",
+      "description": "aaaaaaaaaaaaaa",
+      "priority": "high",
+      "status": "in-progress",
+      "dueDate": "2026-08-22",
+      "createdAt": "2026-08-20T00:25:59.140Z",
+      "id": "Yy1nFzHTElA"
+    },
+    {
+      "title": "Informe de algo",
+      "description": "aaaaaaaaaaaaaa",
+      "priority": "medium",
+      "status": "pending",
+      "dueDate": "2026-08-21",
+      "createdAt": "2026-08-20T00:30:11.370Z",
+      "id": "QjmEThL3jR4"
+    },
+    {
+      "title": "Informe de algo",
+      "description": "aaaaaaaaaaaaaa",
+      "priority": "medium",
+      "status": "pending",
+      "dueDate": "2026-08-21",
+      "createdAt": "2026-08-20T00:31:00.483Z",
+      "id": "-rlRmr42PxY"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

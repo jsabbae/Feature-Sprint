@@ -1,51 +1,109 @@
 import { useState } from "react";
 
-export async function createTask(task) {
-    const response = await fetch("http://localhost:3001/tasks", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(task),
-    });
+function TaskForm({ onCreateTask }) {
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [priority, setPriority] = useState("medium");
+    const [status, setStatus] = useState("pending");
+    const [dueDate, setDueDate] = useState("");
 
-    if (!response.ok) {
-        throw new Error("Error al crear la tarea");
-    }
-    return response.json();
+    function handleSubmit(event) {
+        event.preventDefault();
 
-    function TaskForm({ onCreateTask }) {
-        const [title, setTitle] = useState("");
-        const [description, setDescription] = useState("");
-        const [priority, setPriority] = useState("medium");
-        const [status, setStatus] = useState("pending");
-        const [dueDate, setDueDate] = useState("");
+        // Aquí iran las validaciones
 
-        function handleSubmit(event) {
-            event.preventDefault();
+        // Validación de la longitud del título obligatorio
 
-            // Aquí iran las validaciones
-
-            // Validación del título obligatorio
-
-            // Validación de longitud del título
-
-            // Validación de la descripción
-
-            // Validación de la fecha límite
-
-            const newTask = {
-                title,
-                description,
-                priority,
-                status,
-                dueDate: dueDate || null,
-                createdAt: new Date().toISOString(),
-            };
-            onCreateTask(newTask);
-
+        if (!title.trim()) {
+            alert("El título es obligatorio");
+            return;
         }
-        return(<form onSubmit={handleSubmit}></form>);
+
+        // Validación de la descripción
+
+        if (description.length > 300) {
+            alert("La descripción no puede superar los 300 caracteres");
+            return;
+        }
+
+        // Validación de la fecha límite
+
+        if (dueDate) {
+            const today = new Date().toISOString().split("T")[0];
+            if (dueDate < today) {
+                alert("La fecha límite no puede ser anterior a hoy");
+                return;
+            }
+        }
+
+        const newTask = {
+            title,
+            description,
+            priority,
+            status,
+            dueDate: dueDate || null,
+            createdAt: new Date().toISOString(),
+        };
+        onCreateTask(newTask);
+
     }
-    export default TaskForm;
+    return (<form onSubmit={handleSubmit}>
+        <div>
+            <label htmlFor="title">Título</label>
+            <input
+                id="title"
+                type="text"
+                value={title}
+                onChange={(event) => setTitle(event.target.value)}
+                placeholder="Título de la tarea"
+            />
+        </div>
+
+        <div>
+            <label htmlFor="description">Descripción</label>
+            <input
+                id="description"
+                value={description}
+                onChange={(event) => setDescription(event.target.value)}
+                placeholder="Descripción de la tarea"
+            />
+        </div>
+
+        <div>
+            <label htmlFor="status">Estado</label>
+            <select
+                id="status"
+                value={status}
+                onChange={(event) => setStatus(event.target.value)}>
+                <option value="pending">Pendiente</option>
+                <option value="in-progress">En progreso</option>
+                <option value="completed">Completada</option>
+            </select>
+        </div>
+
+        <div>
+            <label htmlFor="priority">Prioridad</label>
+            <select
+                id="priority"
+                value={priority}
+                onChange={(event) => setPriority(event.target.value)}>
+                <option value="low">Baja</option>
+                <option value="medium">Media</option>
+                <option value="high">Alta</option>
+            </select>
+        </div>
+
+        <div>
+            <label htmlFor="dueDate">Fecha límite</label>
+            <input
+                id="dueDate"
+                type="date"
+                value={dueDate}
+                onChange={(event) => setDueDate(event.target.value)}
+            />
+        </div>
+        <button type="submit">Crear tarea</button>
+    </form>);
+
 }
+export default TaskForm;
