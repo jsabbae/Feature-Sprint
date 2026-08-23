@@ -36,6 +36,19 @@ function TaskForm({ onCreateTask }) {
             }
         }
 
+        //  if (dueDate) {
+        //     const today = new Date();
+
+        //     const todayString = today.getFullYear() + "-"
+        //         + String(today.getMonth() + 1).padStart(2, "0") + "-"
+        //         + String(today.getDate()).padStart(2, "0");
+
+        //     if (dueDate && dueDate < todayString) {
+        //         alert("La fecha límite no puede ser anterior a hoy");
+        //         return;
+        //     }
+        // }
+
         const newTask = {
             title,
             description,
@@ -48,6 +61,7 @@ function TaskForm({ onCreateTask }) {
 
     }
     return (<form onSubmit={handleSubmit}>
+       
         <div>
             <label htmlFor="title">Título</label>
             <input
@@ -75,9 +89,9 @@ function TaskForm({ onCreateTask }) {
                 id="status"
                 value={status}
                 onChange={(event) => setStatus(event.target.value)}>
-                <option value="pending">Pendiente</option>
-                <option value="in-progress">En progreso</option>
-                <option value="completed">Completada</option>
+                <option value="Pendiente">Pendiente</option>
+                <option value="En Progreso">En progreso</option>
+                <option value="Completada">Completada</option>
             </select>
         </div>
 
@@ -87,9 +101,9 @@ function TaskForm({ onCreateTask }) {
                 id="priority"
                 value={priority}
                 onChange={(event) => setPriority(event.target.value)}>
-                <option value="low">Baja</option>
-                <option value="medium">Media</option>
-                <option value="high">Alta</option>
+                <option value="Baja">Baja</option>
+                <option value="Media">Media</option>
+                <option value="Alta">Alta</option>
             </select>
         </div>
 
@@ -102,7 +116,23 @@ function TaskForm({ onCreateTask }) {
                 onChange={(event) => setDueDate(event.target.value)}
             />
         </div>
+
+        {/* <div>
+            <input
+                id="dueDate"
+                type="date"
+                value={dueDate}
+                min={
+                    new Date().getFullYear() + "-"
+                    + String(new Date().getMonth() + 1).padStart(2, "0") + "-"
+                    + String(new Date().getDate() + 1).padStart(2, "0")
+                }
+                onChange={(event) => setDueDate(event.target.value)}
+            />
+        </div> */}
+
         <button type="submit">Crear tarea</button>
+
     </form>);
 
 }

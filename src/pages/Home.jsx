@@ -8,7 +8,6 @@ function Home() {
 
     useEffect(() => {
         getTasks().then((data) => {
-            console.log("Tareas recibidas: ", data);
             setTasks(data);
         })
             .catch((error) => {
@@ -16,6 +15,16 @@ function Home() {
 
             });
     }, []);
+
+
+    async function handleCreateTask(newTask) {
+        try {
+            const createdTask = await createTask(newTask);
+            setTasks((previousTasks) => [...previousTasks, createdTask]);
+        } catch (error) {
+            console.error(error);
+        }
+    }
     return (
         <main>
             <h1>Gestión de tareas</h1>
@@ -24,14 +33,4 @@ function Home() {
         </main>
     );
 }
-
-async function handleCreateTask(newTask) {
-    try {
-        const createdTask = await createTask(newTask);
-        setTasks((previousTasks) => [...previousTasks, createdTask]);
-    } catch (error) {
-        console.error(error);
-    }
-}
-
 export default Home;
