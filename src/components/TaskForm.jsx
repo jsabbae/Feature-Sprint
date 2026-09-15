@@ -1,13 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-function TaskForm({ onCreateTask }) {
+function TaskForm({ onCreateTask, onUpdateTask, editingTask }) {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [priority, setPriority] = useState("medium");
     const [status, setStatus] = useState("pending");
     const [dueDate, setDueDate] = useState("");
 
-    function handleSubmit(event) {
+    useEffect(() => {
+        if (editingTask) {
+            setTitle(editingTask.title || "");
+            setDescription(editingTask.description || "");
+            setPriority(editingTask.priority || "medium");
+            setStatus(editingTask.status || "pending");
+            setDueDate(editingTask.dueDate || "");
+        } else {
+            setTitle("");
+            setDescription("");
+            setPriority("medium");
+            setStatus("pending");
+            setDueDate("");
+        }
+    }, [editingTask]);
+
+    async function handleSubmit(event) {
         event.preventDefault();
 
         // Aquí iran las validaciones
@@ -16,6 +32,11 @@ function TaskForm({ onCreateTask }) {
 
         if (!title.trim()) {
             alert("El título es obligatorio");
+            return;
+        }
+
+        if (title.length < 5 || title.length > 100) {
+            alert("El título debe tener entre 5 y 100 caracteres");
             return;
         }
 
@@ -49,7 +70,7 @@ function TaskForm({ onCreateTask }) {
         //     }
         // }
 
-        const newTask = {
+        const taskData = {
             title,
             description,
             priority,
@@ -57,11 +78,21 @@ function TaskForm({ onCreateTask }) {
             dueDate: dueDate || null,
             createdAt: new Date().toISOString(),
         };
-        onCreateTask(newTask);
 
+        if (editingTask) {
+            await onUpdateTask({
+                ...taskData,
+                id: editingTask.id,
+                createdAt: editingTask.createdAt,
+            });
+        } else {
+            await onCreateTask({
+                ...taskData, createdAt: new Date().toISOString(),
+            });
+        }
     }
     return (<form onSubmit={handleSubmit}>
-       
+
         <div>
             <label htmlFor="title">Título</label>
             <input
@@ -88,10 +119,12 @@ function TaskForm({ onCreateTask }) {
             <select
                 id="status"
                 value={status}
-                onChange={(event) => setStatus(event.target.value)}>
-                <option value="Pendiente">Pendiente</option>
-                <option value="En Progreso">En progreso</option>
-                <option value="Completada">Completada</option>
+                disabled
+                >
+                    
+                <option value="pending">Pendiente</option>
+                <option value="in-progress">En progreso</option>
+                <option value="completed">Completada</option>
             </select>
         </div>
 
@@ -131,7 +164,7 @@ function TaskForm({ onCreateTask }) {
             />
         </div> */}
 
-        <button type="submit">Crear tarea</button>
+        <button type="submit">{editingTask ? "Guardar Cambios" : "Crear tarea"}</button>
 
     </form>);
 

@@ -1,86 +1,22 @@
 {
   "tasks": [
     {
-      "id": "1",
       "title": "Preparar un informe",
       "description": "Informe mensual",
-      "status": "pending",
-      "priority": "high",
+      "priority": "Media",
+      "status": "in-progress",
+      "dueDate": null,
       "createdAt": "2026-08-10",
-      "dueDate": "2026-08-17",
-      "_comment": "Fecha límite para completar la tarea"
+      "id": "1"
     },
     {
-      "id": "2",
       "title": "Revisar documentación",
       "description": "Comprobar documentación del proyecto",
+      "priority": "Baja",
       "status": "in progress",
-      "priority": "medium",
-      "createdAt": "2026-08-10",
-      "dueDate": null
-    },
-    {
-      "title": "Informe de algo",
-      "description": "aaaaaaaaaaaaaa",
-      "priority": "high",
-      "status": "in-progress",
-      "dueDate": "2026-08-22",
-      "createdAt": "2026-08-20T00:25:59.140Z",
-      "id": "Yy1nFzHTElA"
-    },
-    {
-      "title": "Informe de algo",
-      "description": "aaaaaaaaaaaaaa",
-      "priority": "medium",
-      "status": "pending",
-      "dueDate": "2026-08-21",
-      "createdAt": "2026-08-20T00:30:11.370Z",
-      "id": "QjmEThL3jR4"
-    },
-    {
-      "title": "Informe de algo",
-      "description": "aaaaaaaaaaaaaa",
-      "priority": "medium",
-      "status": "pending",
-      "dueDate": "2026-08-21",
-      "createdAt": "2026-08-20T00:31:00.483Z",
-      "id": "-rlRmr42PxY"
-    },
-    {
-      "title": "Hola",
-      "description": "123",
-      "priority": "low",
-      "status": "completed",
-      "dueDate": "2026-08-24",
-      "createdAt": "2026-08-22T00:09:50.180Z",
-      "id": "yglDy_S4adg"
-    },
-    {
-      "title": "IIIIuuuuuuuuu",
-      "description": "na",
-      "priority": "medium",
-      "status": "En Progreso",
-      "dueDate": "2026-08-23",
-      "createdAt": "2026-08-22T00:15:41.483Z",
-      "id": "MktGweleVHY"
-    },
-    {
-      "title": "prueba",
-      "description": "ooo",
-      "priority": "Media",
-      "status": "En Progreso",
-      "dueDate": "2026-08-26",
-      "createdAt": "2026-08-22T01:07:30.067Z",
-      "id": "j0NnBK_J-7Q"
-    },
-    {
-      "title": "'",
-      "description": "5",
-      "priority": "Media",
-      "status": "Completada",
       "dueDate": null,
-      "createdAt": "2026-08-22T01:39:32.171Z",
-      "id": "ZI5RT2cuKZM"
+      "createdAt": "2026-08-10",
+      "id": "2"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

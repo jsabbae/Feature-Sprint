@@ -1,4 +1,4 @@
-function TaskCard({ task }) {
+function TaskCard({ task, onEditTask, onDeleteTask, onStatusChange }) {
 
     let fechaEuropea = "Sin fecha";
     let fechaLimiteEuropea = "Sin fecha límite"
@@ -29,8 +29,18 @@ function TaskCard({ task }) {
         <div>
             <h2>{task.title}</h2>
             <p>{task.description}</p>
-            <p>Estado: {task.status}</p>
+            <label>Estado:
+                <select value={task.status}
+                    onChange={(event) => onStatusChange(task, event.target.value)}>
+
+                    <option value="pending">Pendiente</option>
+                    <option value="in-progress">En progreso</option>
+                    <option value="completed">Completada</option>
+                </select>
+            </label>
             <p>Prioridad: {task.priority}</p>
+            <button onClick={() => onEditTask(task)}>Editar</button>
+            <button onClick={() => onDeleteTask(task)}>Eliminar</button>
             <p id="fecha">Creada: {fechaEuropea}</p>
             <p id="fechaLimite">Fecha límite {fechaLimiteEuropea}</p>
         </div>
